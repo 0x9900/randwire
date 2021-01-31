@@ -5,12 +5,12 @@ import sys
 from setuptools import setup, find_packages
 
 __author__ = "Fred C. (W6BSD)"
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 __license__ = 'BSD'
 
 py_version = sys.version_info[:2]
 if py_version < (3, 5):
-  raise RuntimeError('SA818 requires Python 3.5 or later')
+  raise RuntimeError('Randwire requires Python 3.5 or later')
 
 def readme():
   with open('README.md') as fd:
