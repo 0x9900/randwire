@@ -26,7 +26,8 @@ optional arguments:
   -D, --debug           Print information useful for debugging
   -b BANDS [BANDS ...], --bands BANDS [BANDS ...]
                         List of bands [default: [40, 20, 15, 10]]
-  -f FILE, --file FILE  Graph filename [default: wire.png]
+  -f FILE, --file FILE  Graph filename, then extention can be (.png, .pdf,
+                        .svg) [default: wire.png]
   -u {meter,feet}, --unit {meter,feet}
                         Wire length [default: meter]
 ```
