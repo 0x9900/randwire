@@ -4,6 +4,9 @@
 This program helps you to calculate the optimal length of wire for
 building a random length antenna.
 
+You can find more info on my blog post related to this program:
+[Random-Wire antenna][1].
+
 ## Installation
 
 ```
@@ -36,11 +39,11 @@ optional arguments:
 13:45:27 INFO: "wire.png" saved
 ```
 
-This will generate the following image. Where the blue blocks
-represent the length of wire to avoid.
+The program generates an image showing the length of the wire to
+avoid. The blue blocks represent the length of the wire that might
+cause tuning problems.
 
 ![Wire Length](https://raw.githubusercontent.com/0x9900/randwire/main/misc/wire.png)
 
-More info on my blog post [Random-Wire antenna][1] related to this program.
 
 [1]: https://0x9900.com/random-wire-antenna/
