@@ -40,3 +40,7 @@ This will generate the following image. Where the blue blocks
 represent the length of wire to avoid.
 
 ![Wire Length](https://raw.githubusercontent.com/0x9900/randwire/main/misc/wire.png)
+
+More info on my blog post [Random-Wire antenna][1] related to this program.
+
+[1]: https://0x9900.com/random-wire-antenna/

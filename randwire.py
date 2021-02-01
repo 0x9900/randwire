@@ -15,17 +15,17 @@ logger = logging.getLogger('WLEN')
 UNITS = ['meter', 'feet']
 
 BANDS = {
-  160: (1800., 2000., 1),
-  80: (3500., 4000., 2),
-  60: (5330.5, 5405., 2),
-  40: (7000., 7300., 3),
-  30: (10100., 10150., 3),
-  20: (14000., 14350., 4),
-  17: (18068., 18168., 4),
-  15: (21000., 21450., 4),
-  12: (24890., 24990., 5),
-  10: (28000., 29700., 6),
-   6: (50000., 54000., 6),
+  160: (1800., 2000., 2),
+  80: (3500., 4000., 3),
+  60: (5330.5, 5405., 3),
+  40: (7000., 7300., 4),
+  30: (10100., 10150., 4),
+  20: (14000., 14350., 5),
+  17: (18068., 18168., 5),
+  15: (21000., 21450., 8),
+  12: (24890., 24990., 8),
+  10: (28000., 29700., 8),
+   6: (50000., 54000., 10),
 }
 
 class Unit:
@@ -58,7 +58,7 @@ def plot(filename, bands):
 
   axis.xaxis.set_major_locator(MultipleLocator(Unit.xlabels))
   axis.xaxis.set_major_formatter(FormatStrFormatter('%d'))
-  axis.xaxis.set_minor_locator(MultipleLocator(5))
+  axis.xaxis.set_minor_locator(MultipleLocator(Unit.subdiv))
   axis.set_xlabel('Wires length in {}'.format(Unit.name))
 
   axis.margins(0.0, 0.0)
@@ -105,10 +105,12 @@ def main():
   Unit.name = pargs.unit
   if pargs.unit == 'meter':
     Unit.light_speed = 299.80
-    Unit.xlabels = 10
+    Unit.xlabels = 5
+    Unit.subdiv = 1
   elif pargs.unit == 'feet':
     Unit.light_speed = 983
-    Unit.xlabels = 30
+    Unit.xlabels = 20
+    Unit.subdiv = 5
   else:
     raise argparse.ArgumentError
 
