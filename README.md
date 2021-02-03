@@ -17,7 +17,7 @@ $ pip install randwire
 
 ```
 usage: randwire.py [-h] [-D] [-b BANDS [BANDS ...]] [-f FILE]
-                   [-u {meter,feet}]
+                   [-u {meter,feet}] [-c CSV]
 
 Wire length to avoid
 
@@ -30,6 +30,7 @@ optional arguments:
                         .svg) [default: wire.png]
   -u {meter,feet}, --unit {meter,feet}
                         Wire length [default: meter]
+  -c CSV, --csv CSV     Name of the .csv file [default: no_file]
 ```
 
 ## Example
