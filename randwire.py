@@ -2,6 +2,7 @@
 import argparse
 import logging
 import os.path
+import csv
 
 import matplotlib.pyplot as plt
 
@@ -68,6 +69,19 @@ def plot(filename, bands):
   plt.savefig(filename, dpi=100)
   logger.info('"%s" saved', filename)
 
+def gen_csv(filename, bands):
+  try:
+    with open(filename, 'w', newline='') as cfd:
+      writer = csv.writer(cfd, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+      writer.writerow(['Band', 'start', 'length'])
+      for band, values in bands.items():
+        for pair in wire_length(*values):
+          writer.writerow([band] + list(pair))
+  except IOError as err:
+    logger.error(err)
+  else:
+    logger.info('"%s" saved', filename)
+
 def type_fname(parg):
   file_ext = ('.eps', '.jpeg', '.jpg', '.pdf', '.png', '.raw', '.svg', '.svgz', '.tif', '.tiff')
   _, ext = os.path.splitext(parg)
@@ -86,6 +100,8 @@ def main():
                       help='Graph filename, then extention can be (.png, .pdf, .svg) [default: %(default)s]')
   parser.add_argument('-u', '--unit', choices=UNITS, default=UNITS[0],
                       help='Wire length [default: %(default)s]')
+  parser.add_argument('-c', '--csv', default=None,
+                      help='Name of the .csv file [default: no_file]')
 
   pargs = parser.parse_args()
 
@@ -114,7 +130,11 @@ def main():
   else:
     raise argparse.ArgumentError
 
+  if pargs.csv:
+    gen_csv(pargs.csv, bands)
+
   plot(pargs.file, bands)
+
 
 if __name__ == "__main__":
   main()
