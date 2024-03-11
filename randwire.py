@@ -65,7 +65,7 @@ def plot(filename, bands):
   axis.margins(0.0, 0.0)
   axis.set_yticks([0, 1])
   axis.set_yticklabels([])
-  axis.set_title('Wire length to avoid for ({}) meter'.format(band_names))
+  axis.set_title('Wire length to avoid for the ({}) meter bands'.format(band_names))
   plt.savefig(filename, dpi=100)
   logger.info('"%s" saved', filename)
 
@@ -86,7 +86,7 @@ def type_fname(parg):
   file_ext = ('.eps', '.jpeg', '.jpg', '.pdf', '.png', '.raw', '.svg', '.svgz', '.tif', '.tiff')
   _, ext = os.path.splitext(parg)
   if ext not in file_ext:
-    raise argparse.ArgumentTypeError('supported extentions are: ({})'.format(
+    raise argparse.ArgumentTypeError('supported extensions are: ({})'.format(
       ', '.join(file_ext)))
   return parg
 
@@ -97,7 +97,7 @@ def main():
   parser.add_argument('-b', '--bands', nargs="+", type=int, default=[40, 20, 15, 10],
                       help=('List of bands [default: %(default)s]'))
   parser.add_argument('-f', '--file', type=type_fname, default='wire.png',
-                      help='Graph filename, then extention can be (.png, .pdf, .svg) [default: %(default)s]')
+                      help='Graph filename, then extension can be (.png, .pdf, .svg) [default: %(default)s]')
   parser.add_argument('-u', '--unit', choices=UNITS, default=UNITS[0],
                       help='Wire length [default: %(default)s]')
   parser.add_argument('-c', '--csv', default=None,
